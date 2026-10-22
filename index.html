@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="App de previsão do tempo com geolocalização e visual que muda conforme o clima.">
+  <title>Clima</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="welcome">
+  <div class="sky" id="sky" aria-hidden="true"></div>
+
+  <main class="app">
+    <!-- Tela inicial -->
+    <section class="welcome" id="screen-welcome">
+      <p class="welcome__icon" aria-hidden="true">🌦️</p>
+      <h1 class="welcome__title">Como está o tempo?</h1>
+      <p class="welcome__text">Digite uma cidade ou use sua localização para ver a previsão.</p>
+
+      <form class="search search--big" role="search">
+        <input type="search" name="city" placeholder="Ex.: Recife, Curitiba, Lisboa..." autocomplete="off" aria-label="Nome da cidade" required>
+        <button type="submit" class="search__btn" aria-label="Buscar">Buscar</button>
+        <ul class="suggestions" hidden></ul>
+      </form>
+      <button type="button" class="btn-geo" data-action="geolocate">📍 Usar minha localização</button>
+    </section>
+
+    <!-- Tela principal -->
+    <section class="weather" id="screen-weather" hidden>
+      <header class="weather__top">
+        <form class="search" role="search">
+          <input type="search" name="city" placeholder="Buscar outra cidade" autocomplete="off" aria-label="Buscar outra cidade" required>
+          <button type="submit" class="search__btn" aria-label="Buscar">🔍</button>
+          <ul class="suggestions" hidden></ul>
+        </form>
+        <button type="button" class="btn-geo btn-geo--icon" data-action="geolocate" aria-label="Usar minha localização" title="Usar minha localização">📍</button>
+      </header>
+
+      <div class="current">
+        <h2 class="current__place" id="place"></h2>
+        <p class="current__updated" id="updated"></p>
+        <div class="current__main">
+          <span class="current__icon" id="current-icon" role="img"></span>
+          <span class="current__temp" id="current-temp"></span>
+        </div>
+        <p class="current__condition" id="current-condition"></p>
+        <p class="current__range" id="current-range"></p>
+      </div>
+
+      <dl class="details">
+        <div class="detail">
+          <dt>🌡️ Sensação térmica</dt>
+          <dd id="feels-like"></dd>
+        </div>
+        <div class="detail">
+          <dt>💧 Umidade</dt>
+          <dd id="humidity"></dd>
+        </div>
+        <div class="detail">
+          <dt>💨 Vento</dt>
+          <dd id="wind"></dd>
+        </div>
+      </dl>
+
+      <h3 class="forecast-title">Próximos 3 dias</h3>
+      <ul class="forecast" id="forecast"></ul>
+    </section>
+
+    <p class="message" id="message" role="alert" hidden></p>
+    <div class="loading" id="loading" hidden><span class="loading__spinner"></span>Carregando…</div>
+  </main>
+
+  <footer class="footer">
+    Dados: <a href="https://open-meteo.com" target="_blank" rel="noopener noreferrer">Open-Meteo</a> ·
+    <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap</a>
+  </footer>
+
+  <script src="js/logic.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

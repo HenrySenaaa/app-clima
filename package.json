@@ -1,0 +1,13 @@
+{
+  "name": "app-clima",
+  "version": "1.0.0",
+  "description": "App de previsão do tempo com geolocalização e visual dinâmico conforme o clima (Open-Meteo).",
+  "private": true,
+  "scripts": {
+    "test": "node --test"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "jsdom": "^30.1.3"
+  }
+}
